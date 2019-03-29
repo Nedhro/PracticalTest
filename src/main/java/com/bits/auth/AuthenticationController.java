@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.bits.dto.Response;
+
+import com.bits.common.Response;
 import com.bits.security.TokenUtil;
 import java.util.HashMap;
 import java.util.Map;

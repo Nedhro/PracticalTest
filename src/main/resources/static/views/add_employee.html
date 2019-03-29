@@ -7,7 +7,7 @@
 		                <span>Choose file</span>
 		        		<input type="file" class="upload" title="Choose File" data-file-model="myFile" 
 		        			onchange="angular.element(this).scope().checkFileType(this.files)" />
-		        		<img ng-src="/content/{{vm.user.id}}" class="img img-square" height="125px" width="125px" ng-show="vm.user.hasFile"/>
+		        		<img ng-src="/content/{{vm.user.id}}" class="img img-square" height="125px" width="125px" ng-show="vm.user.profileUrl != null"/>
 			        </div>
 			         <span class="import-alert-text text-primary" >{{hasFiles}}</span>
 			         <span class="import-alert-text text-danger" >{{errType}}</span>
@@ -29,7 +29,7 @@
 		            <option value="">Select Gender</option>
 		            <option value="Male">Male</option> 
 		            <option value="Female">Female</option> 
-		            <option value="Other">other</option> 
+		            <option value="Other">Other</option> 
 		            </select>
 		            <span ng-show="(userForm.gender.$dirty|| submitted) && userForm.gender.$error.required" class="help-block text-danger">Gender is required</span>
 		        </div>

@@ -1,5 +1,7 @@
 1.git clone https://github.com/shofiq4744/PracticalTest.git or download as zip
 2.Navigate project folder
+3.start mysql 
+4.create a database name practicaltest
 3.gradlew clean build
 you will see message Build success
 4. run the application using gradlew bootRun command

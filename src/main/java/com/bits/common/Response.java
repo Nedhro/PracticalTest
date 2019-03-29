@@ -1,11 +1,10 @@
-package com.bits.dto;
+package com.bits.common;
 
 
 public class Response<T> {
     private String status;
     private String message;
     private T data;
-    private long count;
     
     public Response(){
     	
@@ -41,14 +40,5 @@ public class Response<T> {
 	public void setData(T data) {
 		this.data = data;
 	}
-
-	public long getCount() {
-		return count;
-	}
-
-	public void setCount(long count) {
-		this.count = count;
-	}
-    
 
 }

@@ -1,4 +1,4 @@
-package com.bits.dto;
+package com.bits.employee;
 
 public class EmployeeGenderReportDto {
     	

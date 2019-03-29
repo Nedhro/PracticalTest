@@ -1,13 +1,13 @@
-package com.bits.dto;
+package com.bits.apiinteraction;
 
 
-public class ResponseInteractionTypeGroup<T> {
+public class ResponseInteraction<T> {
     
-	 public ResponseInteractionTypeGroup(){
+	 public ResponseInteraction(){
 		 
 	 }
 	 
-    public ResponseInteractionTypeGroup(T interactionTypeGroup,String message,int status){
+    public ResponseInteraction(T interactionTypeGroup,String message,int status){
     	this.interactionTypeGroup = interactionTypeGroup;
     	this.message = message;
     	this.statusCode = status;

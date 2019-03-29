@@ -39,7 +39,7 @@
 
                             <tr ng-repeat="user in users">
                             <td>
-                            <img ng-src="/content/{{user.id}}" class="img img-square" height="25px" width="25px" ng-show="user.hasFile"/>
+                            <img ng-src="/content/{{user.id}}" class="img img-square" height="25px" width="25px" ng-show="user.profileUrl != null"/>
                             </td>
                                     <td >{{user.name}}</td>
                                        

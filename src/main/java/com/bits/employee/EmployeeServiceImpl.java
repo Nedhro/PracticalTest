@@ -3,6 +3,7 @@ package com.bits.employee;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,11 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.bits.common.CommonServiceImpl;
 import com.bits.common.Utill;
-import com.bits.dto.EmployeeDto;
-import com.bits.dto.EmployeeGenderReportDto;
 
 @Service
 @Transactional
+@Primary
 public class EmployeeServiceImpl extends CommonServiceImpl<Employee> implements EmployeeService {
 
 	@Autowired
@@ -27,24 +27,22 @@ public class EmployeeServiceImpl extends CommonServiceImpl<Employee> implements 
     
     @Transactional
     @Override
-    public Employee AddNew(EmployeeDto accountDto) throws Exception {
+    public Employee AddNew(EmployeeDto employeeDto) throws Exception {
     	
-    	Employee employee = findByName(accountDto.getName());
-        if(employee != null) {
-            throw new DuplicateEmployeeException(employee, "Error! employee already exist with this name");
-        }
+    	checkEmployeeExist(employeeDto);
         
-    	if(accountDto.getId() != null){
-    		employee = findById(accountDto.getId());
+    	Employee employee = null;    	        
+    	if(employeeDto.getId() != null){
+    		employee = findById(employeeDto.getId());
     	} else {
     		employee = new Employee();
     	}
 
-        employee.setName(accountDto.getName());
-        employee.setGender(accountDto.getGender());
-        employee.setDob(new SimpleDateFormat("yyyy-MM-dd").parse(accountDto.getDob()));
-        if(accountDto.getFile() != null) employee.setPic(accountDto.getFile().getBytes());
-        if(accountDto.getNote() != null)employee.setNote(accountDto.getNote());
+        employee.setName(employeeDto.getName());
+        employee.setGender(employeeDto.getGender());
+        employee.setDob(new SimpleDateFormat("yyyy-MM-dd").parse(employeeDto.getDob()));
+        if(employeeDto.getFile() != null) employee.setPic(employeeDto.getFile().getBytes());
+        if(employeeDto.getNote() != null)employee.setNote(employeeDto.getNote());
         return repository.save(employee);
     }
 
@@ -88,6 +86,14 @@ public class EmployeeServiceImpl extends CommonServiceImpl<Employee> implements 
 	@Override
 	public Employee findByName(String name) {
 		return repository.findByName(name);
+	}
+	
+	private void checkEmployeeExist(EmployeeDto employeeDto) throws DuplicateEmployeeException{
+		Employee employeeNameExist = findByName(employeeDto.getName());
+        if((employeeNameExist != null && employeeNameExist.getId() != employeeDto.getId()) ||
+        	(employeeNameExist != null && employeeDto.getId()== null)) {
+            throw new DuplicateEmployeeException(employeeNameExist, "Error! employee already exist with this name "+employeeNameExist.getName());
+        }       
 	}
 
 }

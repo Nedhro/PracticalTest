@@ -11,16 +11,15 @@
         $scope.currentPage = 1;
         $scope.itemsPerPage = 5; 
         UserService.getData("/api/interaction")
-	    .then(function (response) {         	
+	    .then(function (response) {
 	    	$scope.interactionTypeGroup =response.interactionTypeGroup.interactionTypeGroup;
-	    	$scope.interactionPair = $scope.interactionTypeGroup[0].interactionType[0].interactionPair;
-	    	vm.dataLoading =false;
-	    	//$scope.totalItems = $scope.interactionPair.length;
-	    	console.dir($scope.interactionTypeGroup[0].interactionType[0].interactionPair);
-
-          }, function(result){
+	    	if($scope.interactionTypeGroup[0].interactionType.length>0){
+	    		$scope.interactionPair = $scope.interactionTypeGroup[0].interactionType[0].interactionPair;
+		    	vm.dataLoading =false;
+	    	}
+         }, function(result){
         	  console.log(result)
-          });
+         });
     }
 
 })();

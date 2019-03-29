@@ -5,7 +5,7 @@
         .module('PracticalTest')
         .controller('EmployeeReportController', RegisterController);
  
-    function RegisterController(UserService,$localStorage, $stateParams, $location, $rootScope,$scope,$window,$uibModal) {
+    function RegisterController(UserService,$scope) {
         var vm = this;
 
         UserService.getData("/api/v1/employee/gender")

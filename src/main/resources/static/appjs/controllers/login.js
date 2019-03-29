@@ -5,9 +5,8 @@
         .module('PracticalTest')
         .controller('Login.IndexController', Controller);
 
-    function Controller($location, AuthenticationService,$localStorage,$scope) {
+    function Controller($location,AuthenticationService,$localStorage,$scope) {
         var vm = this;
-
         vm.login = login;
 
         function login() {
@@ -17,13 +16,10 @@
                     $location.path('/home');
                 } else {
                     vm.error = 'Username or password is incorrect';
-                    vm.loading = false;
-                   
+                    vm.loading = false;                  
                 }
             });
         };
     }
 
-})();/**
- * 
- */
+})();

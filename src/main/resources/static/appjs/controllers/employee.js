@@ -9,9 +9,7 @@
         var vm = this; 
         vm.addNewEmployee = addNewEmployee;
         
-        if(typeof $stateParams.id !== 'undefined'){
-        	console.log($stateParams.id);
-        	
+        if(typeof $stateParams.id !== 'undefined'){        	
         	UserService.GetEmployeeById($stateParams.id)
 	        .then(function (response) {
 	            if (response.status==="success") {               
@@ -36,7 +34,7 @@
                         	vm.error = response.message;
                         }
                     });
-				}                  	
+				}
         }
         
         $scope.isvalidImage = true;
@@ -57,7 +55,6 @@
 				$scope.isvalidImage = true;
 				$scope.userForm.$valid=true;
 			}
-
 		};
         
     }

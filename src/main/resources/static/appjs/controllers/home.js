@@ -49,8 +49,6 @@
 	      		            	if (response.status==="success") {
 	      		            		$scope.users.splice(index,1);
 	      		            		modalInstance.dismiss("cancel");
-	      		            	} else {
-	      		            		//$rootScope.ShowAlertMessage('alert-danger', result.message );
 	      		            	}
 	      		            }, function(result){
 	      		            	$rootScope.ShowAlertMessage('alert-danger', result.message );
