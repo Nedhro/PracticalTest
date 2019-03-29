@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="PracticalTest">
+<head>
+    <title ng-bind="title">Employee Profile System</title>
+
+    <!-- bootstrap css -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?v=20171001" >
+    <link type="text/css" rel="stylesheet" href="css/style.css?v=20190328">
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #31b0d5;" ng-show="currentUser.token != 'undefined'">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img alt="" src="/image/index.png" style="width:100px;height:30px;margin-top: -5px;"/> </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+	        <ul class="nav navbar-nav pull-right" style="color: #fff;">
+	        	<li ng-show="tokenPayload.sub !=null"> <a href="#/genderWiseEmployees" style="color: #fff;">Report</a></li>
+		        <li ng-show="tokenPayload.sub !=null"> <a href="#/home" style="color: #fff;">Home</a></li>
+		        <li ng-show="tokenPayload.sub !=null"> <a href="#/apiinteraction" style="color: #fff;">API</a></li>
+		        <li ng-show="tokenPayload.sub !=null" style="padding-top: 15px"> <span> &nbsp|&nbsp</span></li>
+		        <li ng-show="tokenPayload.sub !=null" style="padding-top: 15px"> <span>{{tokenPayload.sub}}&nbsp&nbsp</span></li>
+		        <li ng-show="tokenPayload.sub !=null" > <button class="btn btn-default" ng-click="logout()" >logout</button></li>
+	        </ul>        
+        </div>
+      </div>
+    </nav>
+    <!-- main app container -->
+
+    <div class="container-fluid" style="padding-top: 50px">
+           <ui-view></ui-view>
+		
+      </div>
+
+    <!-- credits -->
+    <div class="text-center">
+        <p>
+            <a href="https://github.com/shofiq4744" target="_top"> GitHub &middot; <a href="https://www.linkedin.com/in/shofiqul-islam">LinkedIn</a> 
+        </p>
+        <p>
+            <a href="#" target="_top">Md. Shofiqul Islam</a>
+        </p>
+    </div>
+
+    <!-- angular scripts -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js?v=20170925" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js?v=20190328" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js?v=20190328"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-animate.min.js?v=20190328"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js?v=20190328"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js?v=20190328"></script>
+	
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.3/angular-messages.min.js?v=20190328"></script>     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js?v=20190328"></script>
+    <script src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.min.js?v=20190328"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-validate/1.2.3/validate.js?v=20190328"></script>
+   
+
+    <!-- application scripts -->
+    <script src="appjs/PracticalTest.js"></script>
+    <script src="appjs/directives/directives.js"></script>
+    <script src="appjs/controllers/home.js"></script>
+    <script src="appjs/controllers/login.js"></script>
+    <script src="appjs/controllers/employee.js"></script>
+    <script src="appjs/controllers/api_interaction.js"></script>
+    <script src="appjs/controllers/employee_report.js"></script>
+    <script src="appjs/services/authentication_service.js"></script>
+    <script src="appjs/services/service.js"></script>
+
+</body>
+</html>

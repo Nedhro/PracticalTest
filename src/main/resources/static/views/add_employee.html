@@ -1,0 +1,54 @@
+<div class="row">
+     <div class="col-md-6 col-md-offset-3">
+		    <h2>Add new employee</h2>
+		    <form name="userForm" ng-submit="vm.addNewEmployee()" novalidate>
+			    <div class="form-group" >
+				    <div class="fileUpload btn btn-simple btn-grey">
+		                <span>Choose file</span>
+		        		<input type="file" class="upload" title="Choose File" data-file-model="myFile" 
+		        			onchange="angular.element(this).scope().checkFileType(this.files)" />
+		        		<img ng-src="/content/{{vm.user.id}}" class="img img-square" height="125px" width="125px" ng-show="vm.user.hasFile"/>
+			        </div>
+			         <span class="import-alert-text text-primary" >{{hasFiles}}</span>
+			         <span class="import-alert-text text-danger" >{{errType}}</span>
+		        </div>
+		    	<div class="form-group" >
+		            <label for="username">Name*</label>
+		            <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.name" placeholder="Eneter Your First Name" required/>
+		            <span ng-show="(userForm.firstName.$dirty || submitted) && userForm.firstName.$error.required" class="help-block text-danger">Name is required</span>
+		    	</div>
+		        <div class="form-group" >
+		            <label for="dob">Date of Birth*</label>
+		            <input type="text" name="dob" id="username" class="form-control" ng-model="vm.user.dob" autocomplete="off" placeholder="YYYY-MM-DD" ng-pattern="/^(19|20)\d\d[\-](0[1-9]|1[012])[\-](0[1-9]|[12][0-9]|3[01])$/" required/>
+		            <span ng-show="(userForm.dob.$dirty|| submitted) && userForm.dob.$error.required" class="help-block text-danger">Date of Birth is required</span>		   
+		        	<span ng-show="(userForm.dob.$dirty|| submitted) && userForm.dob.$invalid" class="help-block text-danger">Invalid Date of Birth must be YYYY-MM-DD i.e(1990-12-31)</span>
+		        </div>
+		        <div class="form-group" >
+		            <label for="gender">Gender*</label>
+		            <select name="gender" class="form-control" ng-model="vm.user.gender" required>
+		            <option value="">Select Gender</option>
+		            <option value="Male">Male</option> 
+		            <option value="Female">Female</option> 
+		            <option value="Other">other</option> 
+		            </select>
+		            <span ng-show="(userForm.gender.$dirty|| submitted) && userForm.gender.$error.required" class="help-block text-danger">Gender is required</span>
+		        </div>
+		        <div class="form-group" >
+		            <label for="note">Note</label>
+		            <textarea rows="3" cols="3" class="form-control" ng-model="vm.user.note">
+		            </textarea>
+		    	</div>
+			    <div class="form-actions">
+			            <button type="submit"  class="btn btn-primary">Create</button>
+			            <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+			            <a href="#/home" class="btn btn-link">Cancel</a>
+			    </div>
+				<div ng-if="vm.error" class="alert alert-danger">
+					<a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					{{vm.error}}				
+				</div>
+
+		</form>
+    </div>
+</div>
+  
