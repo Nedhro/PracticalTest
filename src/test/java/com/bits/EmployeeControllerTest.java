@@ -28,28 +28,6 @@ public class EmployeeControllerTest {
         		.andExpect(status()
         		.isOk())
         		.andExpect(jsonPath("$.status", is("success")));
-        	//	.andExpect(jsonPath("$.data.numberOfElements", is(2)));
     }
-    
-   /* @Test
-    public void givenEmployees_whenGetEmployees_thenReturnJsonArray()
-      throws Exception {
-         
-        Employee shofiq = new Employee("Shofiq","Male",new SimpleDateFormat("yyyy-MM-dd").parse("1985-01-15"));
-     
-        List<Employee> allEmployees = Arrays.asList(shofiq);
-     
-        given(service.findAll()).willReturn(allEmployees);
-
-
-        mvc.perform(get("/api/v1/employee?page=0&size=2")
-        		.contentType(MediaType.APPLICATION_JSON))
-		        .andExpect(status().isOk())
-		        .andExpect(jsonPath("$.status", is("success")));
-		  //      .andExpect(jsonPath("$", hasSize(1)));
-       // .andExpect(jsonPath("$[0].name", is(alex.getName()))).
-       // andExpect(jsonPath("$[1].name", is(john.getName())))
-       // andExpect(jsonPath("$[2].name", is(bob.getName())));
-    }*/
-    
+  
 }
