@@ -5,7 +5,6 @@ import java.util.Date;
 
 
 public class Utill {
-
 	
 	public static Date getDateByAge(int year){
 		Calendar c = Calendar.getInstance();

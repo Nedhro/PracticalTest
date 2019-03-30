@@ -2,10 +2,9 @@
 <html ng-app="PracticalTest">
 <head>
     <title ng-bind="title">Employee Profile System</title>
-
     <!-- bootstrap css -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?v=20171001" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?v=20190328" >
     <link type="text/css" rel="stylesheet" href="css/style.css?v=20190328">
 
 </head>
@@ -22,23 +21,30 @@
           <a class="navbar-brand" href="#"><img alt="" src="/image/index.png" style="width:100px;height:30px;margin-top: -5px;"/> </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-	        <ul class="nav navbar-nav pull-right" style="color: #fff;">
-	        	<li ng-show="tokenPayload.sub !=null"> <a href="#/genderWiseEmployees" style="color: #fff;">Report</a></li>
-		        <li ng-show="tokenPayload.sub !=null"> <a href="#/home" style="color: #fff;">Home</a></li>
-		        <li ng-show="tokenPayload.sub !=null"> <a href="#/apiinteraction" style="color: #fff;">API</a></li>
-		        <li ng-show="tokenPayload.sub !=null" style="padding-top: 15px"> <span> &nbsp|&nbsp</span></li>
-		        <li ng-show="tokenPayload.sub !=null" style="padding-top: 15px"> <span>{{tokenPayload.sub}}&nbsp&nbsp</span></li>
-		        <li ng-show="tokenPayload.sub !=null" > <button class="btn btn-default" ng-click="logout()" >logout</button></li>
-	        </ul>        
-        </div>
+				<ul class="nav navbar-nav pull-right" ng-show="tokenPayload.sub !=null">
+					<li ng-class="{'bg-active':currentmenu=='/home'}"><a href="#/home">Home</a></li>
+					<li ng-class="{'bg-active':currentmenu=='/genderWiseEmployees'}"> <a href="#/genderWiseEmployees">Report</a></li>
+					<li ng-class="{'bg-active':currentmenu=='/apiinteraction'}"> <a href="#/apiinteraction">API</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" >{{tokenPayload.sub}} <span class="caret"></span></a>
+						<ul class="dropdown-menu pull-right">
+							<!-- <li>{{tokenPayload.role[0].authority}}</li> -->
+							<li><a ng-click="logout()">Logout</a></li>
+						</ul>
+					</li>
+
+				</ul>
+
+			</div>
       </div>
     </nav>
     <!-- main app container -->
 
     <div class="container-fluid" style="padding-top: 50px">
+    	<div class="wrapper">
            <ui-view></ui-view>
-		
-      </div>
+        </div>	
+    </div>
 
     <!-- credits -->
     <div class="text-center">

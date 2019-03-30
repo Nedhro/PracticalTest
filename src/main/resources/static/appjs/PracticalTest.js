@@ -70,34 +70,13 @@
         
         // redirect to login page if not logged in and trying to access a restricted page
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        	$rootScope.currentmenu = $location.path();
             var publicPages = ['/login'];
             var restrictedPage = publicPages.indexOf($location.path()) === -1;
             if (restrictedPage && !$localStorage.currentUser) {
                 $location.path('/login');
             }
         });
-        
-        //Alert Message
-        $rootScope.AlertMessage = {
-        	alertTypeClass : '',
-        	message : '',
-        	visible : false
-        }
-        
-        $rootScope.ShowAlertMessage = function (className, message){
-        	 $rootScope.AlertMessage.alertTypeClass = className; 
-        	 $rootScope.AlertMessage.message = message;
-        	 $rootScope.AlertMessage.visible = true;
-        	 $rootScope.HideAlertMessage();
-        }
-        
-        $rootScope.HideAlertMessage = function(){
-        	 $timeout(function() {
-        		$rootScope.AlertMessage.alertTypeClass = '';
-        		$rootScope.AlertMessage.message = '';
-        		$rootScope.AlertMessage.visible = false;
-        	}, 3000);
-        }
         
         $rootScope.logout = function () {
         	delete $localStorage.currentUser;
